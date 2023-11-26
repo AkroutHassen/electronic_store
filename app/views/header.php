@@ -91,13 +91,10 @@
                             <a href="#">Links</a>
                             <div class="header-menu">
                                 <ul class="mb-0 d-none d-lg-flex">
-                                    <li><a href="?url=profile">My Account</a></li>
                                     <li><a href="?url=about">About Us</a></li>
-                                    <li><a href="wishlist.html">My Wishlist</a></li>
-                                    <li><a href="demo21-about.html">Site Map</a></li>
-                                    <li><a href="cart.html">Cart</a></li>
+                                    <li><a href="/?url=cart">Cart</a></li>
                                     <?php if(isset($_SESSION['user'])){ ?>
-                                        <li><?=$_SESSION['user']['name']?></li>
+                                        <li><a href="?url=profile"><?=$_SESSION['user']['name']?></a></li>
                                         <li><a href="?url=logout">Logout</a></li>
                                     <?php } else { ?>
                                     <li><a href="?url=login">Log In</a></li>
@@ -161,9 +158,6 @@
                     </div>
 
                     <div class="header-right ml-0 ml-lg-auto">
-                        <a href="wishlist.html" class="header-icon">
-                            <i class="icon-wishlist-2"></i>
-                        </a>
 
                         <div class="dropdown cart-dropdown">
                             <a href="#" title="Cart" class="dropdown-toggle cart-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
@@ -256,7 +250,7 @@
                                     <!-- End .dropdown-cart-total -->
 
                                     <div class="dropdown-cart-action">
-                                        <a href="cart.html" class="btn btn-gray btn-block view-cart">View
+                                        <a href="/?url=cart" class="btn btn-gray btn-block view-cart">View
                                             Cart</a>
                                         <a href="checkout.html" class="btn btn-dark btn-block">Checkout</a>
                                     </div>
@@ -282,7 +276,7 @@
                         <nav class="main-nav w-100">
                             <ul class="menu">
                                 <li class="active">
-                                    <a href="demo21.html">Home</a>
+                                    <a href="/">Home</a>
                                 </li>
                                 <li>
                                     <a href="demo21-shop.html">Categories</a>
@@ -401,8 +395,7 @@
                                 <li>
                                     <a href="#">Pages</a>
                                     <ul>
-                                        <li><a href="wishlist.html">Wishlist</a></li>
-                                        <li><a href="cart.html">Shopping Cart</a></li>
+                                        <li><a href="/?url=cart">Shopping Cart</a></li>
                                         <li><a href="checkout.html">Checkout</a></li>
                                         <li><a href="dashboard.html">Dashboard</a></li>
                                         <li><a href="demo21-about.html">About Us</a></li>
@@ -479,9 +472,6 @@
                         </div>
                         <!-- End .header-search -->
 
-                        <a href="wishlist.html" class="header-icon">
-                            <i class="icon-wishlist-2"></i>
-                        </a>
 
                         <div class="dropdown cart-dropdown">
                             <a href="#" title="Cart" class="dropdown-toggle cart-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
@@ -574,7 +564,7 @@
                                     <!-- End .dropdown-cart-total -->
 
                                     <div class="dropdown-cart-action">
-                                        <a href="cart.html" class="btn btn-gray btn-block view-cart">View
+                                        <a href="/?url=cart" class="btn btn-gray btn-block view-cart">View
                                             Cart</a>
                                         <a href="checkout.html" class="btn btn-dark btn-block">Checkout</a>
                                     </div>

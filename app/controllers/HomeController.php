@@ -33,6 +33,10 @@ class HomeController {
         $controller = $this;
         include("app/views/Home/demo21-products.php");
     }
+    public function cart()
+    {
+        include("app/views/Home/cart.php");
+    }
 
 }
 

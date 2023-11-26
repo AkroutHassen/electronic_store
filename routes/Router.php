@@ -20,7 +20,12 @@ class Router {
             return;
         }
         $middleware = $this->getAuthMiddleware($uri);
-        if ($middleware !== false) {
+        if ($middleware == 'guest' && isset($_SESSION['user'])) {
+            // Redirect to home page
+            header('Location: /');
+            return;
+        }
+        else if (($middleware == 'auth' || $middleware == 'admin' || $middleware == 'user') && isset($_SESSION['user'])) {
             // Check if user is logged in
             if (!isset($_SESSION['user'])) {
                 // Redirect to login page

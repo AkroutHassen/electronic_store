@@ -8,11 +8,12 @@ $router->addRoute('/about', 'HomeController@about');
 $router->addRoute('/contact', 'HomeController@contact');
 $router->addRoute('/products', 'HomeController@products');
 $router->addRoute('/shop', 'HomeController@shop');
+$router->addRoute('/cart', 'HomeController@cart');
 
-$router->addRoute('/login', 'AuthController@login');
-$router->addRoute('/register', 'AuthController@register');
-$router->addRoute('/confirmLogin', 'AuthController@confirmLogin');
-$router->addRoute('/confirmRegister', 'AuthController@confirmRegister');
+$router->addRoute('/login', 'AuthController@login', 'guest');
+$router->addRoute('/register', 'AuthController@register', 'guest');
+$router->addRoute('/confirmLogin', 'AuthController@confirmLogin', 'guest');
+$router->addRoute('/confirmRegister', 'AuthController@confirmRegister', 'guest');
 $router->addRoute('/logout', 'AuthController@logout', 'auth');
 $router->addRoute('/profile', 'AuthController@profile', 'auth');
 

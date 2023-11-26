@@ -27,23 +27,38 @@
 								<div class="heading mb-1">
 									<h2 class="title">Login</h2>
 								</div>
-
+								<?php if(isset($_SESSION['success'])): ?>
+									<div class="alert alert-success" role="alert">
+										<?php 
+											echo $_SESSION['success'];
+											session_destroy(); 
+										?>
+									</div>
+								<?php endif; ?>
 								<form action="/?url=confirmLogin" method="post">
 									<label for="login-email">
 										Username or email address
 										<span class="required">*</span>
 									</label>
-									<input type="email" name="email" class="form-input form-wide" id="login-email" required="">
+									<input type="email" name="email" class="form-input form-wide" id="login-email" required="" <?php if(isset($_COOKIE['user_email'])){ ?>value="<?=$_COOKIE['user_email'] ?>" <?php } ?>>
+									<?php if(isset($_SESSION['error'])): ?>
+										<div class="alert alert-danger" role="alert">
+											<?php 
+												echo $_SESSION['error'];
+												session_destroy(); 
+											?>
+										</div>
+									<?php endif; ?>
 
 									<label for="login-password">
 										Password
 										<span class="required">*</span>
 									</label>
-									<input type="password" name="password" class="form-input form-wide" id="login-password" required="">
+									<input type="password" name="password" class="form-input form-wide" id="login-password" required="" <?php if(isset($_COOKIE['password'])){ ?>value="<?=$_COOKIE['password'] ?>" <?php } ?>>
 
 									<div class="form-footer">
 										<div class="custom-control custom-checkbox mb-0">
-											<input type="checkbox" class="custom-control-input" id="lost-password">
+											<input type="checkbox" name="remember_me" class="custom-control-input" id="lost-password">
 											<label class="custom-control-label mb-0" for="lost-password">Remember
 												me</label>
 										</div>
