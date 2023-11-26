@@ -1,4 +1,6 @@
 <?php
-require_once("app\controllers\ProductController.php");
-(new ProductController())->index();
+session_start();
+require("routes/web.php");
+$uri = isset($_GET['url']) ? '/'.$_GET['url'] : '/';
+$router->dispatch($uri);
 ?>
