@@ -77,249 +77,58 @@
                 <div class="container">
                     <h2 class="section-title ls-n-10 pb-3 m-b-4">Featured Products</h2>
 
-                    <div class="row no-gutters">
+                    <div class="row mt-2 divide-line row-joined up-effect">
+                        <?php $i=0; foreach($products as $product) :?>
                         <div class="col-6 col-sm-4 col-md-3 col-xl-2">
-                            <div class="product-default inner-quickview inner-icon">
-                                <figure>
-                                    <a href="demo21-product.html">
-                                        <img src="assets/images/demoes/demo21/products/product-1.jpg" width="217" height="217" alt="product">
-                                        <img src="assets/images/demoes/demo21/products/product-1-2.jpg" width="217" height="217" alt="product">
-                                    </a>
-                                    <div class="label-group">
-                                        <div class="product-label label-hot">HOT</div>
-                                    </div>
-                                    <div class="btn-icon-group">
-                                        <a href="demo21-product.html" class="btn-icon btn-add-cart"><i class="fa fa-arrow-right"></i></a>
-                                    </div>
-                                    <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick View</a>
-                                </figure>
-                                <div class="product-details">
-                                    <div class="category-wrap">
-                                        <div class="category-list">
-                                            <a href="demo21-shop.html" class="product-category">category</a>
-                                        </div>
-                                        <a href="wishlist.html" title="Add to Wishlist" class="btn-icon-wish"><i class="icon-heart"></i></a>
-                                    </div>
-                                    <h3 class="product-title">
-                                        <a href="demo21-product.html">Digital Camera 16x</a>
-                                    </h3>
-                                    <div class="ratings-container">
-                                        <div class="product-ratings">
-                                            <span class="ratings" style="width:80%"></span>
-                                            <!-- End .ratings -->
-                                            <span class="tooltiptext tooltip-top"></span>
-                                        </div>
-                                        <!-- End .product-ratings -->
-                                    </div>
-                                    <!-- End .product-container -->
-                                    <div class="price-box">
-                                        <span class="product-price">$101.00 &ndash; $111.00</span>
-                                    </div>
-                                    <!-- End .price-box -->
+                        <div class="product-default">
+                            <figure>
+                                <a href="/?url=products/show/<?= $product->id ?>">
+                                    <img src="assets/images/products/product-13.jpg" width="280" height="280" alt="product">
+                                </a>
+
+                                <div class="label-group">
+                                    <div class="product-label label-hot">HOT</div>
+                                    <div class="product-label label-sale">-20%</div>
                                 </div>
-                                <!-- End .product-details -->
-                            </div>
-                        </div>
-                        <div class="col-6 col-sm-4 col-md-3 col-xl-2">
-                            <div class="product-default inner-quickview inner-icon">
-                                <figure>
-                                    <a href="demo21-product.html">
-                                        <img src="assets/images/demoes/demo21/products/product-2.jpg" width="217" height="217" alt="product">
-                                    </a>
-                                    <div class="btn-icon-group">
-                                        <a href="demo21-product.html" class="btn-icon btn-add-cart"><i class="fa fa-arrow-right"></i></a>
+                            </figure>
+
+                            <div class="product-details">
+                                <div class="category-wrap">
+                                    <div class="category-list">
+                                        <a href="category.html" class="product-category"><?= $product->category_name ?></a>
                                     </div>
-                                    <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick View</a>
-                                </figure>
-                                <div class="product-details">
-                                    <div class="category-wrap">
-                                        <div class="category-list">
-                                            <a href="demo21-shop.html" class="product-category">category</a>
-                                        </div>
-                                        <a href="wishlist.html" title="Add to Wishlist" class="btn-icon-wish"><i class="icon-heart"></i></a>
-                                    </div>
-                                    <h3 class="product-title">
-                                        <a href="demo21-product.html">Porto Extended Camera</a>
-                                    </h3>
-                                    <div class="ratings-container">
-                                        <div class="product-ratings">
-                                            <span class="ratings" style="width:0%"></span>
-                                            <!-- End .ratings -->
-                                            <span class="tooltiptext tooltip-top"></span>
-                                        </div>
-                                        <!-- End .product-ratings -->
-                                    </div>
-                                    <!-- End .product-container -->
-                                    <div class="price-box">
-                                        <span class="product-price">$599.00</span>
-                                    </div>
-                                    <!-- End .price-box -->
                                 </div>
-                                <!-- End .product-details -->
-                            </div>
-                        </div>
-                        <div class="col-6 col-sm-4 col-md-3 col-xl-2">
-                            <div class="product-default inner-quickview inner-icon">
-                                <figure>
-                                    <a href="demo21-product.html">
-                                        <img src="assets/images/demoes/demo21/products/product-3.jpg" width="217" height="217" alt="product">
-                                        <img src="assets/images/demoes/demo21/products/product-3-2.jpg" width="217" height="217" alt="product">
-                                    </a>
-                                    <div class="label-group">
-                                        <div class="product-label label-hot">HOT</div>
-                                        <div class="product-label label-sale">-26%</div>
+
+                                <h3 class="product-title"> <a href="/?url=products/show/<?= $product->id ?>"><?= $product->product_name ?></a>
+                                </h3>
+
+                                <div class="ratings-container">
+                                    <div class="product-ratings">
+                                        <span class="ratings" style="width:100%"></span>
+                                        <!-- End .ratings -->
+                                        <span class="tooltiptext tooltip-top"></span>
                                     </div>
-                                    <div class="btn-icon-group">
-                                        <a href="demo21-product.html" class="btn-icon btn-add-cart"><i class="fa fa-arrow-right"></i></a>
-                                    </div>
-                                    <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick View</a>
-                                </figure>
-                                <div class="product-details">
-                                    <div class="category-wrap">
-                                        <div class="category-list">
-                                            <a href="demo21-shop.html" class="product-category">category</a>
-                                        </div>
-                                        <a href="wishlist.html" title="Add to Wishlist" class="btn-icon-wish"><i class="icon-heart"></i></a>
-                                    </div>
-                                    <h3 class="product-title">
-                                        <a href="demo21-product.html">Black Grey Headset</a>
-                                    </h3>
-                                    <div class="ratings-container">
-                                        <div class="product-ratings">
-                                            <span class="ratings" style="width:80%"></span>
-                                            <!-- End .ratings -->
-                                            <span class="tooltiptext tooltip-top"></span>
-                                        </div>
-                                        <!-- End .product-ratings -->
-                                    </div>
-                                    <!-- End .product-container -->
-                                    <div class="price-box">
-                                        <span class="product-price">$29.00 &ndash; $39.00</span>
-                                    </div>
-                                    <!-- End .price-box -->
+                                    <!-- End .product-ratings -->
                                 </div>
-                                <!-- End .product-details -->
-                            </div>
-                        </div>
-                        <div class="col-6 col-sm-4 col-md-3 col-xl-2">
-                            <div class="product-default inner-quickview inner-icon">
-                                <figure>
-                                    <a href="demo21-product.html">
-                                        <img src="assets/images/demoes/demo21/products/product-4.jpg" width="217" height="217" alt="product">
-                                    </a>
-                                    <div class="label-group">
-                                        <div class="product-label label-hot">HOT</div>
-                                        <div class="product-label label-sale">-13%</div>
-                                    </div>
-                                    <div class="btn-icon-group">
-                                        <a href="#" title="Add To Cart" class="btn-icon btn-add-cart product-type-simple"><i class="icon-shopping-cart"></i></a>
-                                    </div>
-                                    <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick View</a>
-                                </figure>
-                                <div class="product-details">
-                                    <div class="category-wrap">
-                                        <div class="category-list">
-                                            <a href="demo21-shop.html" class="product-category">category</a>
-                                        </div>
-                                        <a href="wishlist.html" title="Add to Wishlist" class="btn-icon-wish"><i class="icon-heart"></i></a>
-                                    </div>
-                                    <h3 class="product-title">
-                                        <a href="demo21-product.html">Battery Charger</a>
-                                    </h3>
-                                    <div class="ratings-container">
-                                        <div class="product-ratings">
-                                            <span class="ratings" style="width:0%"></span>
-                                            <!-- End .ratings -->
-                                            <span class="tooltiptext tooltip-top"></span>
-                                        </div>
-                                        <!-- End .product-ratings -->
-                                    </div>
-                                    <!-- End .product-container -->
-                                    <div class="price-box">
-                                        <span class="old-price">$299.00</span>
-                                        <span class="product-price">$259.00</span>
-                                    </div>
-                                    <!-- End .price-box -->
+                                <!-- End .product-container -->
+
+                                <div class="price-box">
+                                    <span class="old-price"><?= $product->price ?> TND</span>
+                                    <span class="product-price"><?= $product->new_price ?> TND</span>
                                 </div>
-                                <!-- End .product-details -->
-                            </div>
-                        </div>
-                        <div class="col-6 col-sm-4 col-md-3 col-xl-2">
-                            <div class="product-default inner-quickview inner-icon">
-                                <figure>
-                                    <a href="demo21-product.html">
-                                        <img src="assets/images/demoes/demo21/products/product-5.jpg" width="217" height="217" alt="product">
-                                    </a>
-                                    <div class="btn-icon-group">
-                                        <a href="#" title="Add To Cart" class="btn-icon btn-add-cart product-type-simple"><i class="icon-shopping-cart"></i></a>
-                                    </div>
-                                    <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick View</a>
-                                </figure>
-                                <div class="product-details">
-                                    <div class="category-wrap">
-                                        <div class="category-list">
-                                            <a href="demo21-shop.html" class="product-category">category</a>
-                                        </div>
-                                        <a href="wishlist.html" title="Add to Wishlist" class="btn-icon-wish"><i class="icon-heart"></i></a>
-                                    </div>
-                                    <h3 class="product-title">
-                                        <a href="demo21-product.html">Brown Bag</a>
-                                    </h3>
-                                    <div class="ratings-container">
-                                        <div class="product-ratings">
-                                            <span class="ratings" style="width:0%"></span>
-                                            <!-- End .ratings -->
-                                            <span class="tooltiptext tooltip-top"></span>
-                                        </div>
-                                        <!-- End .product-ratings -->
-                                    </div>
-                                    <!-- End .product-container -->
-                                    <div class="price-box">
-                                        <span class="product-price">$299.00</span>
-                                    </div>
-                                    <!-- End .price-box -->
+                                <!-- End .price-box -->
+
+                                <div class="product-action">
+                                    <a href="wishlist.html" class="btn-icon-wish" title="wishlist"><i class="icon-heart"></i></a>
+                                    <a href="/?url=products/show/<?= $product->id ?>" class="btn-icon btn-add-cart"><i class="fa fa-arrow-right"></i><span>ADD TO CART</span></a>
+                                    <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View"><i class="fas fa-external-link-alt"></i></a>
                                 </div>
-                                <!-- End .product-details -->
                             </div>
+                            <!-- End .product-details -->
                         </div>
-                        <div class="col-6 col-sm-4 col-md-3 col-xl-2">
-                            <div class="product-default inner-quickview inner-icon">
-                                <figure>
-                                    <a href="demo21-product.html">
-                                        <img src="assets/images/demoes/demo21/products/product-6.jpg" width="217" height="217" alt="product">
-                                    </a>
-                                    <div class="btn-icon-group">
-                                        <a href="#" title="Add To Cart" class="btn-icon btn-add-cart product-type-simple"><i class="icon-shopping-cart"></i></a>
-                                    </div>
-                                    <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick View</a>
-                                </figure>
-                                <div class="product-details">
-                                    <div class="category-wrap">
-                                        <div class="category-list">
-                                            <a href="demo21-shop.html" class="product-category">category</a>
-                                        </div>
-                                        <a href="wishlist.html" title="Add to Wishlist" class="btn-icon-wish"><i class="icon-heart"></i></a>
-                                    </div>
-                                    <h3 class="product-title">
-                                        <a href="demo21-product.html">Casual Note Bag</a>
-                                    </h3>
-                                    <div class="ratings-container">
-                                        <div class="product-ratings">
-                                            <span class="ratings" style="width:80%"></span>
-                                            <!-- End .ratings -->
-                                            <span class="tooltiptext tooltip-top"></span>
-                                        </div>
-                                        <!-- End .product-ratings -->
-                                    </div>
-                                    <!-- End .product-container -->
-                                    <div class="price-box">
-                                        <span class="product-price">$299.00</span>
-                                    </div>
-                                    <!-- End .price-box -->
-                                </div>
-                                <!-- End .product-details -->
-                            </div>
-                        </div>
+                    </div>
+                    <!-- End .col-sm-4 -->
+                        <?php $i++; if($i>=6){break;} endforeach; ?>
                     </div>
                 </div>
             </section>
@@ -337,54 +146,16 @@
                             }
                         }
                     }" data-animation-name="fadeIn">
-                        <div class="product-category mb-2">
-                            <a href="demo21-shop.html">
-                                <div class="category-content">
-                                    <i class="icon-category-fashion"></i>
-                                    <h3>Fashion</h3>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="product-category mb-2">
-                            <a href="demo21-shop.html">
-                                <div class="category-content">
-                                    <i class="icon-category-electronics"></i>
-                                    <h3>Electronics</h3>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="product-category mb-2">
-                            <a href="demo21-shop.html">
-                                <div class="category-content">
-                                    <i class="icon-category-gifts"></i>
-                                    <h3>Gifts</h3>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="product-category mb-2">
-                            <a href="demo21-shop.html">
-                                <div class="category-content">
-                                    <i class="icon-category-garden"></i>
-                                    <h3>Garden</h3>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="product-category mb-2">
-                            <a href="demo21-shop.html">
-                                <div class="category-content">
-                                    <i class="icon-category-music"></i>
-                                    <h3>Music</h3>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="product-category mb-2">
-                            <a href="demo21-shop.html">
-                                <div class="category-content">
-                                    <i class="icon-category-motors"></i>
-                                    <h3>Motors</h3>
-                                </div>
-                            </a>
-                        </div>
+                        <?php foreach ($categories as $category) : ?>
+                            <div class="product-category">
+                                <a href="demo21-shop.html">
+                                    <div class="category-content">
+                                        <i class="icon-category-fashion"></i>
+                                        <h3><?= $category['name'] ?></h3>
+                                    </div>
+                                </a>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </section>
@@ -1850,4 +1621,4 @@
             </section>
         </main>
         <!-- End .main -->
-<?php include("app/views/footer.php");
+<?php include("app/views/footer.php"); ?>

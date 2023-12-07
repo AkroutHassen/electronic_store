@@ -160,9 +160,9 @@
                     <div class="header-right ml-0 ml-lg-auto">
 
                         <div class="dropdown cart-dropdown">
-                            <a href="#" title="Cart" class="dropdown-toggle cart-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
+                            <a href="#" onclick="refreshCart()" title="Cart" class="dropdown-toggle cart-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
                                 <i class="minicart-icon"></i>
-                                <span class="cart-count badge-circle">3</span>
+                                <!-- <span class="cart-count badge-circle">3</span> -->
                             </a>
 
                             <div class="cart-overlay"></div>
@@ -175,14 +175,15 @@
                                     <!-- End .dropdown-cart-header -->
 
                                     <div class="dropdown-cart-products">
+                                        <?php if(isset($_SESSION["cart"])) { foreach($_SESSION["cart"] as $key => $value) { ?>
                                         <div class="product">
                                             <div class="product-details">
                                                 <h4 class="product-title">
-                                                    <a href="demo21-product.html">Ultimate 3D Bluetooth Speaker</a>
+                                                    <a href="demo21-product.html"><?= $value[0]->name ?></a>
                                                 </h4>
 
                                                 <span class="cart-product-info">
-                                                    <span class="cart-product-qty">1</span> × $99.00
+                                                    <span class="cart-product-qty"><?= $value[1] ?></span> × <?= $value[0]->new_price ?>
                                                 </span>
                                             </div>
                                             <!-- End .product-details -->
@@ -195,49 +196,7 @@
                                                 <a href="#" class="btn-remove" title="Remove Product"><span>×</span></a>
                                             </figure>
                                         </div>
-                                        <!-- End .product -->
-
-                                        <div class="product">
-                                            <div class="product-details">
-                                                <h4 class="product-title">
-                                                    <a href="demo21-product.html">Brown Women Casual HandBag</a>
-                                                </h4>
-
-                                                <span class="cart-product-info">
-                                                    <span class="cart-product-qty">1</span> × $35.00
-                                                </span>
-                                            </div>
-                                            <!-- End .product-details -->
-
-                                            <figure class="product-image-container">
-                                                <a href="demo21-product.html" class="product-image">
-                                                    <img src="assets/images/products/product-2.jpg" alt="product" width="80" height="80">
-                                                </a>
-
-                                                <a href="#" class="btn-remove" title="Remove Product"><span>×</span></a>
-                                            </figure>
-                                        </div>
-                                        <!-- End .product -->
-
-                                        <div class="product">
-                                            <div class="product-details">
-                                                <h4 class="product-title">
-                                                    <a href="demo21-product.html">Circled Ultimate 3D Speaker</a>
-                                                </h4>
-
-                                                <span class="cart-product-info">
-                                                    <span class="cart-product-qty">1</span> × $35.00
-                                                </span>
-                                            </div>
-                                            <!-- End .product-details -->
-
-                                            <figure class="product-image-container">
-                                                <a href="demo21-product.html" class="product-image">
-                                                    <img src="assets/images/products/product-3.jpg" alt="product" width="80" height="80">
-                                                </a>
-                                                <a href="#" class="btn-remove" title="Remove Product"><span>×</span></a>
-                                            </figure>
-                                        </div>
+                                        <?php } } ?>
                                         <!-- End .product -->
                                     </div>
                                     <!-- End .cart-product -->
@@ -474,9 +433,9 @@
 
 
                         <div class="dropdown cart-dropdown">
-                            <a href="#" title="Cart" class="dropdown-toggle cart-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
+                            <a href="#" onclick="refreshCart()" title="Cart" class="dropdown-toggle cart-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
                                 <i class="minicart-icon"></i>
-                                <span class="cart-count badge-circle">3</span>
+                                <!-- <span class="cart-count badge-circle">3</span> -->
                             </a>
 
                             <div class="cart-overlay"></div>
@@ -580,3 +539,16 @@
             </div>
         </header>
         <!-- End .header -->
+        <script>
+            function refreshCart() {
+            var xhr = getXMLHttpRequest();
+            xhr.open("GET", "/?url=refreshCart", true);
+            xhr.send();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    console.log("HEEERREE 2");
+                    console.log(xhr.status);
+                }
+            }
+        }
+        </script>

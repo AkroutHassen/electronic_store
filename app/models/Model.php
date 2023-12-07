@@ -41,7 +41,7 @@ class Model
             $sql = "SELECT * FROM $this->table WHERE id = :id";
             $stmt = $this->db->prepare($sql);
             $stmt->execute(['id' => $id]);
-            return $stmt->fetch(PDO::FETCH_ASSOC);
+            return $stmt->fetch(PDO::FETCH_OBJ);
         } catch (PDOException $e) {
             die("Error finding data: " . $e->getMessage());
         }

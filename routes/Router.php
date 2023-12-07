@@ -11,6 +11,12 @@ class Router {
     }
 
     public function dispatch($uri) {
+        //check if uri ends with a number (id), if yes, replace it with {id} and store the number without / in $id
+        if (preg_match('/\/[0-9]+$/', $uri, $matches)) {
+            $uri = preg_replace('/\/[0-9]+$/', '/{id}', $uri);
+            $id = $matches[0];
+            $id = substr($id, 1);
+        }
           
         $controllerAction = $this->getControllerAction($uri);
         
@@ -54,7 +60,10 @@ class Router {
         $controller = new $controllerName();
         
         // Call the action method
-        $controller->$actionName();
+        if (isset($id))
+            $controller->$actionName($id);
+        else
+            $controller->$actionName();
     }
 
     protected function getControllerAction($uri) {

@@ -1,5 +1,6 @@
 <?php
 require_once("app\models\Product.php");
+require_once("app\models\Category.php");
 require_once("app\models\Database.php");
 require_once("app\controllers\Controller.php");
 class HomeController {
@@ -12,6 +13,7 @@ class HomeController {
     public function index()
     {   
         $products = $this->model->findAll();
+        $categories = (new Category(Database::getInstance()->getConnection()))->findAll();
         $controller = $this;
         include("app/views/Home/demo21.php");
     }
@@ -27,17 +29,10 @@ class HomeController {
     {
         include("app/views/Home/demo21-shop.php");
     }
-    public function products()
-    {
-        $products = $this->model->findAll();
-        $controller = $this;
-        include("app/views/Home/demo21-products.php");
-    }
     public function cart()
     {
         include("app/views/Home/cart.php");
     }
-
 }
 
 ?>

@@ -28,6 +28,7 @@
 							</tr>
 						</thead>
 						<tbody>
+							<?php if(isset($_SESSION["cart"])) { $total=0; foreach($_SESSION["cart"] as $key => $value) { ?>
 							<tr class="product-row">
 								<td>
 									<figure class="product-image-container">
@@ -40,65 +41,18 @@
 								</td>
 								<td class="product-col">
 									<h5 class="product-title">
-										<a href="product.html">Men Watch</a>
+										<a href="product.html"><?= $value[0]->name ?></a>
 									</h5>
 								</td>
-								<td>$17.90</td>
+								<td><?= $value[0]->new_price ?> TND</td>
 								<td>
 									<div class="product-single-qty">
-										<input class="horizontal-quantity form-control" type="text">
+										<input class="horizontal-quantity form-control" type="number" value="<?= $value[1] ?>">
 									</div><!-- End .product-single-qty -->
 								</td>
-								<td class="text-right"><span class="subtotal-price">$17.90</span></td>
+								<td class="text-right"><span class="subtotal-price"><?php $subtotal=$value[0]->new_price * $value[1]; $total+=$subtotal; echo $subtotal; ?> TND</span></td>
 							</tr>
-
-							<tr class="product-row">
-								<td>
-									<figure class="product-image-container">
-										<a href="product.html" class="product-image">
-											<img src="assets/images/products/product-3.jpg" alt="product">
-										</a>
-
-										<a href="#" class="btn-remove icon-cancel" title="Remove Product"></a>
-									</figure>
-								</td>
-								<td class="product-col">
-									<h5 class="product-title">
-										<a href="product.html">Men Watch</a>
-									</h5>
-								</td>
-								<td>$17.90</td>
-								<td>
-									<div class="product-single-qty">
-										<input class="horizontal-quantity form-control" type="text">
-									</div><!-- End .product-single-qty -->
-								</td>
-								<td class="text-right"><span class="subtotal-price">$17.90</span></td>
-							</tr>
-
-							<tr class="product-row">
-								<td>
-									<figure class="product-image-container">
-										<a href="product.html" class="product-image">
-											<img src="assets/images/products/product-6.jpg" alt="product">
-										</a>
-
-										<a href="#" class="btn-remove icon-cancel" title="Remove Product"></a>
-									</figure>
-								</td>
-								<td class="product-col">
-									<h5 class="product-title">
-										<a href="product.html">Men Black Gentle Belt</a>
-									</h5>
-								</td>
-								<td>$17.90</td>
-								<td>
-									<div class="product-single-qty">
-										<input class="horizontal-quantity form-control" type="text">
-									</div><!-- End .product-single-qty -->
-								</td>
-								<td class="text-right"><span class="subtotal-price">$17.90</span></td>
-							</tr>
+							<?php } } ?>
 						</tbody>
 
 
@@ -140,7 +94,7 @@
 						<tbody>
 							<tr>
 								<td>Subtotal</td>
-								<td>$17.90</td>
+								<td><?= $total ?> TND</td>
 							</tr>
 
 							<tr>
