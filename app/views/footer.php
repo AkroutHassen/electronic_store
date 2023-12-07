@@ -347,6 +347,8 @@
     <script src="assets/js/jquery.appear.min.js"></script>
     <script src="assets/js/jquery.plugin.min.js"></script>
     <script src="assets/js/jquery.countdown.min.js"></script>
+    <script src="assets/js/xhr.js"></script>
+    
 
     <!-- Main JS File -->
     <script src="assets/js/main.min.js"></script>

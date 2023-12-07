@@ -7,25 +7,23 @@ class Product extends Model
         parent::__construct($db, 'products');
 
     }
-    public function __get($attr){
+    public function __get($attr)
+    {
         if (!isset($this->data[$attr]))
             return "erreur";
-        else 
+        else
             return ($this->data[$attr]);
     }
-    public function __set($attr,$value) {
+    public function __set($attr, $value)
+    {
         $this->data[$attr] = $value;
     }
     public function findAll()
     {
         try {
-            $sql = "SELECT *, categories.name as category_name, 
-            (SELECT path FROM images WHERE product_id = products.id LIMIT 1) AS image
-            FROM products
-            LEFT JOIN categories
-            ON products.category_id=categories.id";
+            $sql = "SELECT products.id, products.name as product_name, products.brand, products.description, products.price, products.new_price, categories.name as category_name, category_id FROM products INNER JOIN categories ON products.category_id = categories.id";
             $stmt = $this->db->query($sql);
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
         } catch (PDOException $e) {
             die("Error finding data: " . $e->getMessage());
         }
