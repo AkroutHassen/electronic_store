@@ -2,6 +2,9 @@
 require_once("app\models\User.php");
 require_once("app\models\Database.php");
 require_once("app\controllers\Controller.php");
+require_once("app\models\Product.php");
+require_once("app\models\Order.php");
+
 
 class AuthController
 {
@@ -71,11 +74,22 @@ class AuthController
         if(isset($_SESSION['user']))
             $user = $_SESSION['user'];
         
-        if(isset($user) && $user['role'] == 1)
+        if(isset($user) && $user['role'] == 1){
             include("app/views/Auth/dashboard.php");
-        else if(isset($user) && $user['role'] == 0)
+        }else if(isset($user) && $user['role'] == 0){
+            $user_count = (new User(Database::getInstance()->getConnection()))->count();
+            $product_count = (new Product(Database::getInstance()->getConnection()))->count();	
+            $order_count = (new Order(Database::getInstance()->getConnection()))->count();
+            $money = (new Order(Database::getInstance()->getConnection()))->SumTotalAmount()->total;
+           
+            $stats = [
+                'user_count' => $user_count,
+                'product_count' => $product_count,
+                'order_count' => $order_count,
+                'money' => $money
+            ];
             include("app/views/admin/dashboard.php");
-        else
+        }else
             header("Location: /?url=login");
     }
 }

@@ -72,6 +72,11 @@ class OrderDetailsController extends Controller
             'total_amount' => $total
         ];
         (new Order(Database::getInstance()->getConnection()))->update($order,$orderData);
+        $productData = [
+            'id' => $product,
+            'qty_stock' => $qty_stock - $quantity
+        ];  
+        (new Product(Database::getInstance()->getConnection()))->update($product,$productData);
         header("Location: /?url=orderdetails&success=1&message=Order detail created successfully.");
     }
 
@@ -107,6 +112,13 @@ class OrderDetailsController extends Controller
             'qty' => $quantity,
             'price' => $price
         ];
+        $oldQuantite = $this->model->find($id)->quantity;
+        $newQuantite = $quantity - $oldQuantite;
+        $productData = [
+            'id' => $product,
+            'qty_stock' => $qty_stock - $newQuantite
+        ];  
+        (new Product(Database::getInstance()->getConnection()))->update($product,$productData);
         $this->model->update($id,$data);
         $allOrderDetails = (new OrderDetails(Database::getInstance()->getConnection()))->findByOrder($order); 
         $total = 0;
@@ -118,6 +130,7 @@ class OrderDetailsController extends Controller
             'total_amount' => $total
         ];
         (new Order(Database::getInstance()->getConnection()))->update($order,$orderData);
+        
         $allOrderDetails = (new OrderDetails(Database::getInstance()->getConnection()))->findByOrder($order);
     }
 

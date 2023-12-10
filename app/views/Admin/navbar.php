@@ -130,7 +130,7 @@
         <!-- <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#" role="button">
           <i class="fas fa-th-large"></i>
         </a> -->
-          <a href="?url=logout"class="btn btn-danger" >Log out</a>
+          <a href="?url=logout"class="btn btn-danger" >Log out</a>  
        
       </li>
     </ul>
