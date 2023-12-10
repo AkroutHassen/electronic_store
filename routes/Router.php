@@ -31,7 +31,7 @@ class Router {
             header('Location: /');
             return;
         }
-        else if (($middleware == 'auth' || $middleware == 'admin' || $middleware == 'user') && isset($_SESSION['user'])) {
+        else if (($middleware == 'auth' || $middleware == 'admin' || $middleware == 'user')) {
             // Check if user is logged in
             if (!isset($_SESSION['user'])) {
                 // Redirect to login page

@@ -1,12 +1,12 @@
 <?php
 // if (isset($_POST['logout'])) {
-    
+
 //     $_SESSION = array();
 
-    
+
 //     session_destroy();
 
-    
+
 //     header("Location: login.php");
 //     exit();
 // }
@@ -35,7 +35,7 @@
                 families: ['Open+Sans:300,400,600,700,800', 'Poppins:200,300,400,500,600,700,800', 'Oswald:300,400,500,600,700,800']
             }
         };
-        (function(d) {
+        (function (d) {
             var wf = d.createElement('script'),
                 s = d.scripts[0];
             wf.src = 'assets/js/webfont.js';
@@ -93,12 +93,14 @@
                                 <ul class="mb-0 d-none d-lg-flex">
                                     <li><a href="?url=about">About Us</a></li>
                                     <li><a href="/?url=cart">Cart</a></li>
-                                    <?php if(isset($_SESSION['user'])){ ?>
-                                        <li><a href="?url=profile"><?=$_SESSION['user']['name']?></a></li>
+                                    <?php if (isset($_SESSION['user'])) { ?>
+                                        <li><a href="?url=profile">
+                                                <?= $_SESSION['user']['name'] ?>
+                                            </a></li>
                                         <li><a href="?url=logout">Logout</a></li>
                                     <?php } else { ?>
-                                    <li><a href="?url=login">Log In</a></li>
-                                    <li><a href="?url=register">Register</a></li>
+                                        <li><a href="?url=login">Log In</a></li>
+                                        <li><a href="?url=register">Register</a></li>
                                     <?php } ?>
                                 </ul>
                             </div>
@@ -117,16 +119,19 @@
                         </button>
                         <a href="demo21.html" class="logo">
                             <img src="assets/images/logo-white.png" alt="Porto Logo" width="111" height="44">
-                            <img src="assets/images/logo-black.png" alt="Porto Logo" width="111" height="44" class="sticky-logo">
+                            <img src="assets/images/logo-black.png" alt="Porto Logo" width="111" height="44"
+                                class="sticky-logo">
                         </a>
                     </div>
 
                     <div class="header-center">
-                        <div class="header-icon header-search header-search-inline header-search-category w-lg-max text-right mt-0">
+                        <div
+                            class="header-icon header-search header-search-inline header-search-category w-lg-max text-right mt-0">
                             <a href="#" class="search-toggle" role="button"><i class="icon-search-3"></i></a>
                             <form action="#" method="get">
                                 <div class="header-search-wrapper">
-                                    <input type="search" class="form-control" name="q" id="q" placeholder="I'm searching for..." required="">
+                                    <input type="search" class="form-control" name="q" id="q"
+                                        placeholder="I'm searching for..." required="">
                                     <div class="select-custom">
                                         <select id="cat" name="cat">
                                             <option value="">All Categories</option>
@@ -149,7 +154,8 @@
                                         </select>
                                     </div>
                                     <!-- End .select-custom -->
-                                    <button class="btn icon-magnifier bg-dark text-white" title="search" type="submit"></button>
+                                    <button class="btn icon-magnifier bg-dark text-white" title="search"
+                                        type="submit"></button>
                                 </div>
                                 <!-- End .header-search-wrapper -->
                             </form>
@@ -160,7 +166,9 @@
                     <div class="header-right ml-0 ml-lg-auto">
 
                         <div class="dropdown cart-dropdown">
-                            <a href="#" onclick="refreshCart()" title="Cart" class="dropdown-toggle cart-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
+                            <a href="#" onclick="refreshCart()" title="Cart" class="dropdown-toggle cart-toggle"
+                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                data-display="static">
                                 <i class="minicart-icon"></i>
                                 <!-- <span class="cart-count badge-circle">3</span> -->
                             </a>
@@ -174,29 +182,37 @@
                                     <div class="dropdown-cart-header">Shopping Cart</div>
                                     <!-- End .dropdown-cart-header -->
 
-                                    <div class="dropdown-cart-products">
-                                        <?php if(isset($_SESSION["cart"])) { foreach($_SESSION["cart"] as $key => $value) { ?>
-                                        <div class="product">
-                                            <div class="product-details">
-                                                <h4 class="product-title">
-                                                    <a href="demo21-product.html"><?= $value[0]->name ?></a>
-                                                </h4>
+                                    <div class="dropdown-cart-products" id="cart_products">
+                                        <?php if (isset($_SESSION["cart"])) {
+                                            foreach ($_SESSION["cart"] as $key => $value) { ?>
+                                                <div class="product">
+                                                    <div class="product-details">
+                                                        <h4 class="product-title">
+                                                            <a href="demo21-product.html">
+                                                                <?= $value[0]->name ?>
+                                                            </a>
+                                                        </h4>
 
-                                                <span class="cart-product-info">
-                                                    <span class="cart-product-qty"><?= $value[1] ?></span> × <?= $value[0]->new_price ?>
-                                                </span>
-                                            </div>
-                                            <!-- End .product-details -->
+                                                        <span class="cart-product-info">
+                                                            <span class="cart-product-qty">
+                                                                <?= $value[1] ?>
+                                                            </span> ×
+                                                            <?= $value[0]->new_price ?>
+                                                        </span>
+                                                    </div>
+                                                    <!-- End .product-details -->
 
-                                            <figure class="product-image-container">
-                                                <a href="demo21-product.html" class="product-image">
-                                                    <img src="assets/images/products/product-1.jpg" alt="product" width="80" height="80">
-                                                </a>
+                                                    <figure class="product-image-container">
+                                                        <a href="demo21-product.html" class="product-image">
+                                                            <img src="assets/images/products/product-1.jpg" alt="product"
+                                                                width="80" height="80">
+                                                        </a>
 
-                                                <a href="#" class="btn-remove" title="Remove Product"><span>×</span></a>
-                                            </figure>
-                                        </div>
-                                        <?php } } ?>
+                                                        <a href="#" onclick="removeFromCart()" class="btn-remove" title="Remove Product"><span>×</span></a>
+                                                    </figure>
+                                                </div>
+                                            <?php }
+                                        } ?>
                                         <!-- End .product -->
                                     </div>
                                     <!-- End .cart-product -->
@@ -204,14 +220,14 @@
                                     <div class="dropdown-cart-total">
                                         <span>SUBTOTAL:</span>
 
-                                        <span class="cart-total-price float-right">$134.00</span>
+                                        <span class="cart-total-price float-right" id="cart_total">0 TND</span>
                                     </div>
                                     <!-- End .dropdown-cart-total -->
 
                                     <div class="dropdown-cart-action">
                                         <a href="/?url=cart" class="btn btn-gray btn-block view-cart">View
                                             Cart</a>
-                                        <a href="checkout.html" class="btn btn-dark btn-block">Checkout</a>
+                                        <a href="?url=checkout" class="btn btn-dark btn-block">Checkout</a>
                                     </div>
                                     <!-- End .dropdown-cart-total -->
                                 </div>
@@ -238,121 +254,7 @@
                                     <a href="/">Home</a>
                                 </li>
                                 <li>
-                                    <a href="demo21-shop.html">Categories</a>
-                                    <div class="megamenu megamenu-fixed-width megamenu-3cols">
-                                        <div class="row">
-                                            <div class="col-lg-4">
-                                                <a href="#" class="nolink">VARIATION 1</a>
-                                                <ul class="submenu">
-                                                    <li><a href="category.html">Fullwidth Banner</a></li>
-                                                    <li><a href="category-banner-boxed-slider.html">Boxed Slider
-                                                            Banner</a>
-                                                    </li>
-                                                    <li><a href="category-banner-boxed-image.html">Boxed Image
-                                                            Banner</a>
-                                                    </li>
-                                                    <li><a href="category.html">Left Sidebar</a></li>
-                                                    <li><a href="category-sidebar-right.html">Right Sidebar</a></li>
-                                                    <li><a href="category-off-canvas.html">Off Canvas Filter</a></li>
-                                                    <li><a href="category-horizontal-filter1.html">Horizontal
-                                                            Filter1</a>
-                                                    </li>
-                                                    <li><a href="category-horizontal-filter2.html">Horizontal
-                                                            Filter2</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <a href="#" class="nolink">VARIATION 2</a>
-                                                <ul class="submenu">
-                                                    <li><a href="category-list.html">List Types</a></li>
-                                                    <li><a href="category-infinite-scroll.html">Ajax Infinite Scroll</a>
-                                                    </li>
-                                                    <li><a href="category.html">3 Columns Products</a></li>
-                                                    <li><a href="category-4col.html">4 Columns Products</a></li>
-                                                    <li><a href="category-5col.html">5 Columns Products</a></li>
-                                                    <li><a href="category-6col.html">6 Columns Products</a></li>
-                                                    <li><a href="category-7col.html">7 Columns Products</a></li>
-                                                    <li><a href="category-8col.html">8 Columns Products</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-4 p-0">
-                                                <div class="menu-banner">
-                                                    <figure>
-                                                        <img src="assets/images/menu-banner.jpg" alt="Menu banner" width="300" height="300">
-                                                    </figure>
-                                                    <div class="banner-content">
-                                                        <h4>
-                                                            <span class="">UP TO</span><br>
-                                                            <b class="">50%</b>
-                                                            <i>OFF</i>
-                                                        </h4>
-                                                        <a href="category.html" class="btn btn-sm btn-dark">SHOP NOW</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End .megamenu -->
-                                </li>
-                                <li>
-                                    <a href="demo21-product.html">Products</a>
-                                    <div class="megamenu megamenu-fixed-width">
-                                        <div class="row">
-                                            <div class="col-lg-4">
-                                                <a href="#" class="nolink">PRODUCT PAGES</a>
-                                                <ul class="submenu">
-                                                    <li><a href="demo21-product.html">SIMPLE PRODUCT</a></li>
-                                                    <li><a href="product-variable.html">VARIABLE PRODUCT</a></li>
-                                                    <li><a href="demo21-product.html">SALE PRODUCT</a></li>
-                                                    <li><a href="demo21-product.html">FEATURED & ON SALE</a></li>
-                                                    <li><a href="product-custom-tab.html">WITH CUSTOM TAB</a></li>
-                                                    <li><a href="product-sidebar-left.html">WITH LEFT SIDEBAR</a></li>
-                                                    <li><a href="product-sidebar-right.html">WITH RIGHT SIDEBAR</a></li>
-                                                    <li><a href="product-addcart-sticky.html">ADD CART STICKY</a></li>
-                                                </ul>
-                                            </div>
-                                            <!-- End .col-lg-4 -->
-
-                                            <div class="col-lg-4">
-                                                <a href="#" class="nolink">PRODUCT LAYOUTS</a>
-                                                <ul class="submenu">
-                                                    <li><a href="product-extended-layout.html">EXTENDED LAYOUT</a></li>
-                                                    <li><a href="product-grid-layout.html">GRID IMAGE</a></li>
-                                                    <li><a href="product-full-width.html">FULL WIDTH LAYOUT</a></li>
-                                                    <li><a href="product-sticky-info.html">STICKY INFO</a></li>
-                                                    <li><a href="product-sticky-both.html">LEFT & RIGHT STICKY</a></li>
-                                                    <li><a href="product-transparent-image.html">TRANSPARENT IMAGE</a>
-                                                    </li>
-                                                    <li><a href="product-center-vertical.html">CENTER VERTICAL</a></li>
-                                                    <li><a href="#">BUILD YOUR OWN</a></li>
-                                                </ul>
-                                            </div>
-                                            <!-- End .col-lg-4 -->
-
-                                            <div class="col-lg-4 p-0">
-                                                <div class="menu-banner menu-banner-2">
-                                                    <figure>
-                                                        <img src="assets/images/menu-banner-1.jpg" alt="Menu banner" class="product-promo" width="380" height="790">
-                                                    </figure>
-                                                    <i>OFF</i>
-                                                    <div class="banner-content">
-                                                        <h4>
-                                                            <span class="">UP TO</span><br>
-                                                            <b class="">50%</b>
-                                                        </h4>
-                                                    </div>
-                                                    <a href="category.html" class="btn btn-sm btn-dark">SHOP NOW</a>
-                                                </div>
-                                            </div>
-                                            <!-- End .col-lg-4 -->
-                                        </div>
-                                        <!-- End .row -->
-                                    </div>
-                                    <!-- End .megamenu -->
-                                </li>
-                                <li>
-                                    <a href="#">Pages</a>
+                                    <a href="/?url=products">Products</a>
                                     <ul>
                                         <li><a href="/?url=cart">Shopping Cart</a></li>
                                         <li><a href="checkout.html">Checkout</a></li>
@@ -369,39 +271,17 @@
                                         <li><a href="forgot-password.html">Forgot Password</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="blog.html">Blog</a></li>
-                                <li>
-                                    <a href="#">Elements</a>
-                                    <ul class="custom-scrollbar">
-                                        <li><a href="element-accordions.html">Accordion</a></li>
-                                        <li><a href="element-alerts.html">Alerts</a></li>
-                                        <li><a href="element-animations.html">Animations</a></li>
-                                        <li><a href="element-banners.html">Banners</a></li>
-                                        <li><a href="element-buttons.html">Buttons</a></li>
-                                        <li><a href="element-call-to-action.html">Call to Action</a></li>
-                                        <li><a href="element-countdown.html">Count Down</a></li>
-                                        <li><a href="element-counters.html">Counters</a></li>
-                                        <li><a href="element-headings.html">Headings</a></li>
-                                        <li><a href="element-icons.html">Icons</a></li>
-                                        <li><a href="element-info-box.html">Info box</a></li>
-                                        <li><a href="element-posts.html">Posts</a></li>
-                                        <li><a href="element-products.html">Products</a></li>
-                                        <li><a href="element-product-categories.html">Product Categories</a></li>
-                                        <li><a href="element-tabs.html">Tabs</a></li>
-                                        <li><a href="element-testimonial.html">Testimonials</a></li>
-                                    </ul>
-                                </li>
-                                <li class="float-right"><a href="https://1.envato.market/DdLk5" target="_blank">Buy
-                                        Porto!<span class="tip tip-hot">Hot</span></a></li>
                             </ul>
                         </nav>
                     </div>
                     <div class="header-right pr-0">
-                        <div class="header-icon header-search header-search-popup header-search-category w-lg-max text-right">
+                        <div
+                            class="header-icon header-search header-search-popup header-search-category w-lg-max text-right">
                             <a href="#" class="search-toggle" role="button"><i class="icon-search-3"></i></a>
                             <form action="#" method="get">
                                 <div class="header-search-wrapper">
-                                    <input type="search" class="form-control" name="q" id="q1" placeholder="I'm searching for..." required="">
+                                    <input type="search" class="form-control" name="q" id="q1"
+                                        placeholder="I'm searching for..." required="">
                                     <div class="select-custom">
                                         <select id="cat1" name="cat">
                                             <option value="">All Categories</option>
@@ -424,7 +304,8 @@
                                         </select>
                                     </div>
                                     <!-- End .select-custom -->
-                                    <button class="btn icon-search-3 bg-dark text-white p-0" title="search" type="submit"></button>
+                                    <button class="btn icon-search-3 bg-dark text-white p-0" title="search"
+                                        type="submit"></button>
                                 </div>
                                 <!-- End .header-search-wrapper -->
                             </form>
@@ -433,7 +314,9 @@
 
 
                         <div class="dropdown cart-dropdown">
-                            <a href="#" onclick="refreshCart()" title="Cart" class="dropdown-toggle cart-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
+                            <a href="#" onclick="refreshCart()" title="Cart" class="dropdown-toggle cart-toggle"
+                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                data-display="static">
                                 <i class="minicart-icon"></i>
                                 <!-- <span class="cart-count badge-circle">3</span> -->
                             </a>
@@ -462,7 +345,8 @@
 
                                             <figure class="product-image-container">
                                                 <a href="demo21-product.html" class="product-image">
-                                                    <img src="assets/images/products/product-1.jpg" alt="product" width="80" height="80">
+                                                    <img src="assets/images/products/product-1.jpg" alt="product"
+                                                        width="80" height="80">
                                                 </a>
 
                                                 <a href="#" class="btn-remove" title="Remove Product"><span>×</span></a>
@@ -484,7 +368,8 @@
 
                                             <figure class="product-image-container">
                                                 <a href="demo21-product.html" class="product-image">
-                                                    <img src="assets/images/products/product-2.jpg" alt="product" width="80" height="80">
+                                                    <img src="assets/images/products/product-2.jpg" alt="product"
+                                                        width="80" height="80">
                                                 </a>
 
                                                 <a href="#" class="btn-remove" title="Remove Product"><span>×</span></a>
@@ -506,7 +391,8 @@
 
                                             <figure class="product-image-container">
                                                 <a href="demo21-product.html" class="product-image">
-                                                    <img src="assets/images/products/product-3.jpg" alt="product" width="80" height="80">
+                                                    <img src="assets/images/products/product-3.jpg" alt="product"
+                                                        width="80" height="80">
                                                 </a>
                                                 <a href="#" class="btn-remove" title="Remove Product"><span>×</span></a>
                                             </figure>
@@ -540,15 +426,55 @@
         </header>
         <!-- End .header -->
         <script>
-            function refreshCart() {
-            var xhr = getXMLHttpRequest();
-            xhr.open("GET", "/?url=refreshCart", true);
-            xhr.send();
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    console.log("HEEERREE 2");
-                    console.log(xhr.status);
+            function removeFromCart(id) {
+                var xhr = getXMLHttpRequest();
+                xhr.open("GET", "/?url=removeFromCart/" + id, true);
+                xhr.send();
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        refreshCart();
+                    }
                 }
             }
-        }
+            function refreshCart() {
+                var xhr = getXMLHttpRequest();
+                xhr.open("GET", "/?url=refreshCart", true);
+                xhr.send();
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        var cart = JSON.parse(xhr.responseText);
+                        console.log(cart);
+                        var cart_products = document.getElementById("cart_products");
+                        cart_products.innerHTML = "";
+                        total = 0;
+                        for (var key in cart) {
+                            var value = cart[key];
+                            total += value[0]['new_price'] * value[1];
+                            console.log(value);
+                            cart_products.innerHTML += `
+                    <div class="product">
+                                            <div class="product-details">
+                                                <h4 class="product-title">
+                                                    <a href="?url=products/show/`+value[0]['id']+`">`+ value[0]['name'] + `</a>
+                                                </h4>
+
+                                                <span class="cart-product-info">
+                                                    <span class="cart-product-qty">`+ value[1] + `</span> ×` + value[0]['new_price'] + `
+                                                </span>
+                                            </div>
+                                            <!-- End .product-details -->
+
+                                            <figure class="product-image-container">
+                                                <a href="?url=products/show/`+value[0]['id']+`" class="product-image">
+                                                    <img src="assets/images/products/product-1.jpg" alt="product" width="80" height="80">
+                                                </a>
+
+                                                <a href="#" onclick="removeFromCart(`+value[0]['id']+`)" class="btn-remove" title="Remove Product">×</a>
+                                            </figure>
+                                        </div>`;
+                            document.getElementById("cart_total").innerHTML = total+" TND";
+                        }
+                    }
+                }
+            }
         </script>

@@ -13,7 +13,7 @@ class ProductController extends Controller {
     {   
         $products = $this->model->findAll();
         $controller = $this;
-        include("app/views/Home/demo21-product.php");
+        include("app/views/Product/demo21-shop.php");
     }
     public function show($id)
     {

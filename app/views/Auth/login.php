@@ -37,7 +37,7 @@
 								<?php endif; ?>
 								<form action="/?url=confirmLogin" method="post">
 									<label for="login-email">
-										Username or email address
+										Email address
 										<span class="required">*</span>
 									</label>
 									<input type="email" name="email" class="form-input form-wide" id="login-email" required="" <?php if(isset($_COOKIE['user_email'])){ ?>value="<?=$_COOKIE['user_email'] ?>" <?php } ?>>
@@ -54,7 +54,7 @@
 										Password
 										<span class="required">*</span>
 									</label>
-									<input type="password" name="password" class="form-input form-wide" id="login-password" required="" <?php if(isset($_COOKIE['password'])){ ?>value="<?=$_COOKIE['password'] ?>" <?php } ?>>
+									<input type="password" name="password" class="form-input form-wide" id="login-password" required>
 
 									<div class="form-footer">
 										<div class="custom-control custom-checkbox mb-0">

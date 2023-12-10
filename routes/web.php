@@ -6,11 +6,13 @@ $router->addRoute('/', 'HomeController@index');
 $router->addRoute('/home', 'HomeController@index');
 $router->addRoute('/about', 'HomeController@about');
 $router->addRoute('/contact', 'HomeController@contact');
-$router->addRoute('/shop', 'HomeController@shop');
 
 $router->addRoute('/updateCart', 'CartController@updateCart');
 $router->addRoute('/refreshCart', 'CartController@refreshCart');
+$router->addRoute('/removeFromCart/{id}', 'CartController@removeFromCart');
 $router->addRoute('/cart', 'CartController@index');
+
+$router->addRoute('/checkout', 'OrderController@index', 'auth');
 
 $router->addRoute('/login', 'AuthController@login', 'guest');
 $router->addRoute('/register', 'AuthController@register', 'guest');

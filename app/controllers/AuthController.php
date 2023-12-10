@@ -45,13 +45,11 @@ class AuthController
         $password = $_POST["password"];
         $user = $this->model->findByEmail($email);
         if ($user && password_verify($password, $user['password'])) {
-            $_SESSION['user'] = $user;
+            $_SESSION['user'] = $user;            
             if (isset($_POST['remember_me'])) {
                 setcookie("user_email", $user['email'], time() + 3600);
-                setcookie("password", $user['password'], time() + 3600);
             } else {
                 setcookie("user_email", "", time() - 3600);
-                setcookie("password", "", time() - 3600);
             }
             if ($user['role'] == 1) {
                 header("Location: /?url=profile");
