@@ -53,11 +53,9 @@ class AuthController
                 setcookie("user_email", "", time() - 3600);
                 setcookie("password", "", time() - 3600);
             }
-            if ($user['role'] == 1) {
-                header("Location: /?url=profile");
-            } else {
-                header("Location: /");
-            }
+            
+            header("Location: /?url=profile");
+           
         } else {
             $_SESSION['error'] = "Email or password is incorrect";
             header("Location: /?url=login");
@@ -70,8 +68,15 @@ class AuthController
     }
     public function profile()
     {
-        $user = $_SESSION['user'];
-        include("app/views/Auth/dashboard.php");
+        if(isset($_SESSION['user']))
+            $user = $_SESSION['user'];
+        
+        if(isset($user) && $user['role'] == 1)
+            include("app/views/Auth/dashboard.php");
+        else if(isset($user) && $user['role'] == 0)
+            include("app/views/admin/dashboard.php");
+        else
+            header("Location: /?url=login");
     }
 }
 

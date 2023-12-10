@@ -151,7 +151,7 @@
                                 <a href="demo21-shop.html">
                                     <div class="category-content">
                                         <i class="icon-category-fashion"></i>
-                                        <h3><?= $category['name'] ?></h3>
+                                        <h3><?= $category->name ?></h3>
                                     </div>
                                 </a>
                             </div>

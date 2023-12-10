@@ -328,9 +328,9 @@
                     </label>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- End .newsletter-popup-content -->
-
+<!--
         <button title="Close (Esc)" type="button" class="mfp-close">
             ×
         </button>
