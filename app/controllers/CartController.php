@@ -30,6 +30,14 @@ class CartController {
     }
     public function refreshCart()
     {
-        return $_SESSION['cart'];
+        echo json_encode($_SESSION['cart']);
+    }
+    public function removeFromCart($id)
+    {
+        if($_SESSION['cart'][$id][1] > 1)
+            $_SESSION['cart'][$id][1] -= 1;
+        else if($_SESSION['cart'][$id][1] == 1)
+            unset($_SESSION['cart'][$id]);
+        return http_response_code(200);
     }
 }
