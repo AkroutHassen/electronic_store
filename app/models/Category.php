@@ -21,7 +21,7 @@ class Category extends Model
         try {
             $sql = "SELECT * FROM categories";
             $stmt = $this->db->query($sql);
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
         } catch (PDOException $e) {
             die("Error finding data: " . $e->getMessage());
         }

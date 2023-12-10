@@ -13,6 +13,7 @@ class HomeController {
     public function index()
     {   
         $products = $this->model->findAll();
+        
         $categories = (new Category(Database::getInstance()->getConnection()))->findAll();
         $controller = $this;
         include("app/views/Home/demo21.php");
