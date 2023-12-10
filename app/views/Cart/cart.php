@@ -7,7 +7,7 @@
 				<a href="cart.html">Shopping Cart</a>
 			</li>
 			<li>
-				<a href="checkout.html">Checkout</a>
+				<a href="?url=checkout">Checkout</a>
 			</li>
 			<li class="disabled">
 				<a href="cart.html">Order Complete</a>
@@ -28,7 +28,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<?php if(isset($_SESSION["cart"])) { $total=0; foreach($_SESSION["cart"] as $key => $value) { ?>
+							<?php $total=0; if(isset($_SESSION["cart"])) { foreach($_SESSION["cart"] as $key => $value) { ?>
 							<tr class="product-row">
 								<td>
 									<figure class="product-image-container">
@@ -164,7 +164,7 @@
 					</table>
 
 					<div class="checkout-methods">
-						<a href="cart.html" class="btn btn-block btn-dark">Proceed to Checkout
+						<a href="?url=checkout" class="btn btn-block btn-dark">Proceed to Checkout
 							<i class="fa fa-arrow-right"></i></a>
 					</div>
 				</div><!-- End .cart-summary -->

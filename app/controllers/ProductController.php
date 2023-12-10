@@ -25,7 +25,7 @@ class ProductController extends Controller {
         if($user['role'] == 0){
             include("app/views/Admin/products.php");
         }else
-            include("app/views/Home/demo21-product.php");
+            include("app/views/Product/demo21-shop.php");
         
     }
     public function show($id)
