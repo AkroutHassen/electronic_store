@@ -91,5 +91,14 @@ class Model
             die("Error deleting data: " . $e->getMessage());
         }
     }
+    public function count(){
+        try {
+            $sql = "SELECT COUNT(*) FROM $this->table";
+            $stmt = $this->db->query($sql);
+            return $stmt->fetchColumn();
+        } catch (PDOException $e) {
+            die("Error counting data: " . $e->getMessage());
+        }
+    }
 }
 ?>

@@ -94,8 +94,8 @@
             echo getContent($orderDetails);
           else if(isset($users))
             echo getContent($users);
-          else 
-            echo getContent(); ?>
+          else if(isset($stats))
+            echo getContent($stats); ?>
         </div><!-- /.container-fluid -->
       </section>
       <!-- /.content -->
@@ -104,7 +104,7 @@
     
     <!-- /.content-wrapper -->
     <footer class="main-footer">
-      <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+      <strong>Copyright &copy; 2023-2024 <a href="https://www.linkedin.com/in/hassen-akrout/">Hassen Akrout</a> & <a href="https://www.linkedin.com/in/amir-mezghani/">Amir Mezghani</a> .</strong>
       All rights reserved.
       <div class="float-right d-none d-sm-inline-block">
         <b>Version</b> 3.2.0

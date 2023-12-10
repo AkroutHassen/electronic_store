@@ -38,6 +38,16 @@ class Order extends Model {
             die("Error finding data: " . $e->getMessage());
         }
     }
+    public function SumTotalAmount(){
+        try {
+            $sql = "SELECT SUM(total_amount) as total FROM orders WHERE status = 1";
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            die("Error finding data: " . $e->getMessage());
+        }
+    }
 }
 
 
