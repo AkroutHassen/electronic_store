@@ -86,14 +86,6 @@
                                     <a href="/?url=products/show/<?= $product->id ?>">
                                         <img src="assets/images/products/product-13.jpg" width="280" height="280" alt="product">
                                     </a>
-                        <?php $i = 0;
-                        foreach ($products as $product): ?>
-                            <div class="col-6 col-sm-4 col-md-3 col-xl-2">
-                            <div class="product-default">
-                                <figure>
-                                    <a href="/?url=products/show/<?= $product->id ?>">
-                                        <img src="assets/images/products/product-13.jpg" width="280" height="280" alt="product">
-                                    </a>
 
                                     <div class="label-group">
                                         <div class="product-label label-hot">HOT</div>

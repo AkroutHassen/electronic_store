@@ -5,8 +5,9 @@ require_once 'app\models\Image.php';
 require_once 'app\models\Discount.php';
 require_once("app\models\Database.php");
 require_once("app\controllers\Controller.php");
-class ProductController extends Controller {
-    
+class ProductController extends Controller
+{
+
 
     private $model;
     public function __construct()
@@ -15,18 +16,21 @@ class ProductController extends Controller {
         $this->model = new Product($db);
     }
     public function index()
-    {   
+    {
         $products = $this->model->findAll();
-        $categories  = (new Category(Database::getInstance()->getConnection()))->findAll();
+        $categories = (new Category(Database::getInstance()->getConnection()))->findAll();
         $discounts = (new Discount(Database::getInstance()->getConnection()))->findAll();
         $product_images = (new Image(Database::getInstance()->getConnection()));
         $controller = $this;
-        $user = $_SESSION['user'];
-        if($user['role'] == 0){
-            include("app/views/Admin/products.php");
-        }else
+        if (isset($_SESSION['user'])) {
+            $user = $_SESSION['user'];
+            if ($user['role'] == 0) {
+                include("app/views/Admin/products.php");
+            } else
+                include("app/views/Product/demo21-shop.php");
+        } else
             include("app/views/Product/demo21-shop.php");
-        
+
     }
     public function show($id)
     {
@@ -44,15 +48,15 @@ class ProductController extends Controller {
         $price = floatval($_POST['price']);
         $discount = intval($_POST['discount']); // Assuming discount is an integer
         $description = htmlspecialchars($_POST['description']);
-        if($name == '' || $brand == '' || $category == '' || $stock == '' || $quantity == '' || $price == '' || $discount == '' || $description == ''){
+        if ($name == '' || $brand == '' || $category == '' || $stock == '' || $quantity == '' || $price == '' || $discount == '' || $description == '') {
             header("Location: /?url=products&success=0&message=Faild to create the product.");
             exit();
         }
-        if($stock == 1 && $quantity == 0){
+        if ($stock == 1 && $quantity == 0) {
             header("Location: /?url=products&success=0&message=Faild to create the product.");
             exit();
         }
-        if($quantity < 0 || $price < 0){
+        if ($quantity < 0 || $price < 0) {
             header("Location: /?url=products&success=0&message=Faild to create the product.");
             exit();
         }
@@ -61,18 +65,19 @@ class ProductController extends Controller {
         $uploadedFile = '';
         $fileName = '';
         $targetFile = '';
-        $fileInfo ='';
+        $fileInfo = '';
         $date = date('Y-m-d H:i:s');
-        if(isset($_FILES['add_image']) && $_FILES['add_image']['name'] != ''){
+        if (isset($_FILES['add_image']) && $_FILES['add_image']['name'] != '') {
             $uploadedFile = $_FILES['add_image']['tmp_name'];
             $product_id = $this->model->lastId()->id + 1;
             $fileName = $_FILES['add_image']['name'];
             $fileInfo = pathinfo($fileName);
-            $fileExtension = $fileInfo['extension'];  
-            $fileName = $fileName = $product_id.'_'.str_replace([' ', ':'], '_', $name).'_'.str_replace([' ', ':'], '_', $date).'.'.$fileExtension;;
+            $fileExtension = $fileInfo['extension'];
+            $fileName = $fileName = $product_id . '_' . str_replace([' ', ':'], '_', $name) . '_' . str_replace([' ', ':'], '_', $date) . '.' . $fileExtension;
+            ;
             $targetFile = $uploadDir . $fileName;
         }
-        var_dump($uploadedFile);    
+        var_dump($uploadedFile);
         $controller = "ProductController";
         if (move_uploaded_file($uploadedFile, $targetFile)) {
             // Prepare data to be saved
@@ -89,7 +94,7 @@ class ProductController extends Controller {
             ];
 
             // Save the data to the database using your model
-            $this->model->save($data); 
+            $this->model->save($data);
             $product_id = $this->model->lastId()->id;
             $image = new Image(Database::getInstance()->getConnection());
             $image->save(['path' => $fileName, 'product_id' => $product_id]);
@@ -100,9 +105,9 @@ class ProductController extends Controller {
             header("Location: /?url=products&success=0&message=Failed to create the product.");
             exit();
         }
-        
+
     }
-   
+
     public function edit($id)
     {
         $product = $this->model->find($id);
@@ -120,15 +125,15 @@ class ProductController extends Controller {
         $price = floatval($_POST['price']);
         $discount = intval($_POST['discount']); // Assuming discount is an integer
         $description = htmlspecialchars($_POST['description']);
-        if($name == '' || $brand == '' || $category == '' || $stock == '' || $quantity == '' || $price == '' || $discount == '' || $description == ''){
+        if ($name == '' || $brand == '' || $category == '' || $stock == '' || $quantity == '' || $price == '' || $discount == '' || $description == '') {
             header("Location: /?url=products&success=0&message=Faild to update the product.");
             exit();
         }
-        if($stock == 1 && $quantity == 0){
+        if ($stock == 1 && $quantity == 0) {
             header("Location: /?url=products&success=0&message=Faild to update the product.");
             exit();
         }
-        if($quantity < 0 || $price < 0){
+        if ($quantity < 0 || $price < 0) {
             header("Location: /?url=products&success=0&message=Failed to update the product.");
             exit();
         }
@@ -137,19 +142,20 @@ class ProductController extends Controller {
         $uploadedFile = '';
         $fileName = '';
         $targetFile = '';
-        $fileInfo ='';
+        $fileInfo = '';
         $date = date('Y-m-d H:i:s');
-        if(isset($_FILES['edit_image']) && $_FILES['edit_image']['name'] != ''){
+        if (isset($_FILES['edit_image']) && $_FILES['edit_image']['name'] != '') {
             $uploadedFile = $_FILES['edit_image']['tmp_name'];
             $product_id = $this->model->lastId()->id + 1;
             $fileName = $_FILES['edit_image']['name'];
             $fileInfo = pathinfo($fileName);
-            $fileExtension = $fileInfo['extension'];  
-            $fileName = $fileName = $product_id.'_'.str_replace([' ', ':'], '_', $name).'_'.str_replace([' ', ':'], '_', $date).'.'.$fileExtension;;
+            $fileExtension = $fileInfo['extension'];
+            $fileName = $fileName = $product_id . '_' . str_replace([' ', ':'], '_', $name) . '_' . str_replace([' ', ':'], '_', $date) . '.' . $fileExtension;
+            ;
             $targetFile = $uploadDir . $fileName;
             if (move_uploaded_file($uploadedFile, $targetFile)) {
                 // Prepare data to be saved
-                $data['image'] = $fileName; 
+                $data['image'] = $fileName;
                 // Save the data to the database using your model
                 $image = new Image(Database::getInstance()->getConnection());
                 $image->save(['path' => $fileName, 'product_id' => $id]);
@@ -171,31 +177,34 @@ class ProductController extends Controller {
             'discount_id' => $discount,
             'description' => $description,
             'date' => $date
-        ];  
-        $this->model->update($id, $data);  
+        ];
+        $this->model->update($id, $data);
         $controller = "ProductController";
         header("Location: /?url=products&success=1&message=Product updated successfully.");
-        
+
 
     }
     public function delete()
-    {   $id = intval($_POST['id']);
-        $imageModel=   (new Image(Database::getInstance()->getConnection()));
+    {
+        $id = intval($_POST['id']);
+        $imageModel = (new Image(Database::getInstance()->getConnection()));
         $images = $imageModel->findByProductId($id);
-        foreach($images as $image){
-            unlink('assets/dist/img/'.$image->path);
+        foreach ($images as $image) {
+            unlink('assets/dist/img/' . $image->path);
             $imageModel->delete($image->id);
         }
         $this->model->delete($id);
         header("Location: /?url=products&success=1&message=Product deleted successfully.");
     }
 
-    public function getPrice(){
+    public function getPrice()
+    {
         $id = intval($_GET['id']);
         $product = $this->model->find($id);
         echo $product->price;
     }
-    public function getMaxQty(){
+    public function getMaxQty()
+    {
         $id = intval($_GET['id']);
         $product = $this->model->find($id);
         echo $product->qty_stock;

@@ -77,7 +77,7 @@
 								required="">
 
 							<label for="register-email">
-								Number
+								CIN
 								<span class="required">*</span>
 							</label>
 							<input type="number" name="number" class="form-input form-wide" id="register-email" required="">
