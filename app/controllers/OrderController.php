@@ -18,12 +18,11 @@
             
             $users = (new User(Database::getInstance()->getConnection()))->findAll();
             $user = $_SESSION['user'];
-            if($user['role'] == 0){
-                include("app/views/Admin/orders.php");
-            }else{
-                header("Location: /");
-                exit();
-            }
+            include("app/views/Admin/orders.php");
+        }
+
+        public function indexUser() {            
+            include("app/views/Checkout/checkout.php");
         }
 
         public function show($id) {

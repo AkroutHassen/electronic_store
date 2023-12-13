@@ -96,44 +96,6 @@
                         <h2 class="step-title">Billing details</h2>
 
                         <form action="#" id="checkout-form">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>First name
-                                            <abbr class="required" title="required">*</abbr>
-                                        </label>
-                                        <input type="text" class="form-control" required="">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Last name
-                                            <abbr class="required" title="required">*</abbr></label>
-                                        <input type="text" class="form-control" required="">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Company name (optional)</label>
-                                <input type="text" class="form-control">
-                            </div>
-
-                            <div class="select-custom">
-                                <label>Country / Region
-                                    <abbr class="required" title="required">*</abbr></label>
-                                <select name="orderby" class="form-control">
-                                    <option value="" selected="selected">Vanuatu
-                                    </option>
-                                    <option value="1">Brunei</option>
-                                    <option value="2">Bulgaria</option>
-                                    <option value="3">Burkina Faso</option>
-                                    <option value="4">Burundi</option>
-                                    <option value="5">Cameroon</option>
-                                </select>
-                            </div>
-
                             <div class="form-group mb-1 pb-2">
                                 <label>Street address
                                     <abbr class="required" title="required">*</abbr></label>
